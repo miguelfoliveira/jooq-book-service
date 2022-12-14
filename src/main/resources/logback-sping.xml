@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+    <springProfile name="dev">
+        <logger name="io.miguel" level="DEBUG"/>
+        <logger name="org.hibernate.type" level="INFO"/>
+        <logger name="org.hibernate.sql" level="INFO"/>
+    </springProfile>
+
+    <springProfile name="int">
+        <logger name="io.miguel" level="INFO"/>
+        <logger name="org.hibernate.type" level="INFO"/>
+        <logger name="org.hibernate.sql" level="INFO"/>
+    </springProfile>
+
+    <springProfile name="prod">
+        <logger name="io.miguel" level="INFO"/>
+        <logger name="org.hibernate.type" level="WARN"/>
+        <logger name="org.hibernate.sql" level="WARN"/>
+    </springProfile>
+
+    <!--    if running locally  -->
+    <springProfile name="!dev &amp; !int &amp; !prod">
+        <logger name="org.hibernate.type" level="INFO"/>
+        <logger name="org.hibernate.sql" level="DEBUG"/>
+    </springProfile>
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+</configuration>

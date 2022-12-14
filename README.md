@@ -1,1 +1,1 @@
-# book-service
+# jooq-book-service
